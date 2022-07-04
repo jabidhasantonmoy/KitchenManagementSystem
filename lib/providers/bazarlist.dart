@@ -62,4 +62,9 @@ class Bazarlist with ChangeNotifier {
     _items.remove(productId);
     notifyListeners();
   }
+
+  void clear() {
+    _items = {};
+    notifyListeners();
+  }
 }

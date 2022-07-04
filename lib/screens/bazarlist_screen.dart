@@ -3,9 +3,10 @@ import 'package:provider/provider.dart';
 
 import '../providers/bazarlist.dart';
 import '../widgets/bazar_item.dart' as Ci;
+import '../providers/orders.dart';
 
 class BazarlistScreen extends StatelessWidget {
-  static const routName = "/bazar-screen";
+  static const routeName = "/bazar-screen";
   //const ({Key? key}) : super(key: key);
 
   @override
@@ -38,7 +39,7 @@ class BazarlistScreen extends StatelessWidget {
                   Spacer(),
                   Chip(
                     label: Text(
-                      "Tk ${bazar.totalAmount}",
+                      "Tk ${bazar.totalAmount.toStringAsFixed(2)}",
                       style: TextStyle(
                         color: Colors.black87,
                       ),
@@ -46,7 +47,6 @@ class BazarlistScreen extends StatelessWidget {
                     backgroundColor: Colors.pink[50],
                   ),
                   TextButton(
-                    onPressed: () {},
                     child: const Text(
                       'Confirm List',
                       style: TextStyle(
@@ -54,6 +54,13 @@ class BazarlistScreen extends StatelessWidget {
                         fontSize: 15,
                       ),
                     ),
+                    onPressed: () {
+                      Provider.of<Orders>(context, listen: false).addOrder(
+                        bazar.items.values.toList(),
+                        bazar.totalAmount,
+                      );
+                      bazar.clear();
+                    },
                   ),
                 ],
               ),

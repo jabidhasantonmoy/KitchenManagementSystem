@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../widgets/app_drawer.dart';
 import '../widgets/products_grid.dart';
 import '../widgets/badge.dart';
 import '../providers/bazarlist.dart';
@@ -40,7 +41,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                 color: Colors.purpleAccent,
               ),
               onPressed: () {
-                Navigator.of(context).pushNamed(BazarlistScreen.routName);
+                Navigator.of(context).pushNamed(BazarlistScreen.routeName);
               },
             ),
           ),
@@ -73,6 +74,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
         ],
         backgroundColor: Colors.pink[50],
       ),
+      drawer: AppDrawer(),
       backgroundColor: Colors.pink[50],
       body: ProductsGrid(_showOnlyFavorites),
     );
