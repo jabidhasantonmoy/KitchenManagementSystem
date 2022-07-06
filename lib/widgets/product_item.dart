@@ -62,6 +62,18 @@ class ProductItem extends StatelessWidget {
               trailing: IconButton(
                 onPressed: () {
                   bazar.addItem(product.id, product.price, product.title);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Added item to list'),
+                      duration: Duration(seconds: 2),
+                      action: SnackBarAction(
+                        label: 'Undo',
+                        onPressed: () {
+                          bazar.removeSingleItem(product.id);
+                        },
+                      ),
+                    ),
+                  );
                 },
                 icon: Icon(Icons.shopping_bag_outlined),
                 color: Colors.pink,
