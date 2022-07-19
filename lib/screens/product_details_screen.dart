@@ -2,7 +2,7 @@ import 'package:capstone_progress/widgets/product_item.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../providers/products_data_providers.dart';
+import '../providers/products.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   static const routeName = '/product-detail';
