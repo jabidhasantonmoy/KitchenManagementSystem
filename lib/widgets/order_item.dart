@@ -1,7 +1,8 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import '../providers/orders.dart' as ord;
 import 'package:intl/intl.dart';
+
+import '../providers/orders.dart' as ord;
 
 class OrderItem extends StatefulWidget {
   late final ord.OrderItem order;
@@ -21,7 +22,10 @@ class _OrderItemState extends State<OrderItem> {
       child: Column(
         children: <Widget>[
           ListTile(
-            title: Text("\$${widget.order.amount}"),
+            title: Text(
+              "\$${widget.order.amount}",
+              style: TextStyle(fontSize: 20),
+            ),
             subtitle: Text(
               DateFormat("dd-mm-yyyy hh:mm").format(widget.order.dateTime),
             ),
@@ -54,7 +58,7 @@ class _OrderItemState extends State<OrderItem> {
                             '${prod.quantity}x Tk${prod.price}',
                             style: TextStyle(
                               fontSize: 18,
-                              color: Colors.grey,
+                              color: Colors.black87,
                             ),
                           )
                         ],

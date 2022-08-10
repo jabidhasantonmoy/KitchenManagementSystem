@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -35,10 +36,19 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
               value: bazarData.itemCount.toString(),
               color: Colors.pink,
             ),
-            child: IconButton(
-              icon: Icon(
-                Icons.shopping_bag_outlined,
-                color: Colors.purpleAccent,
+            child: TextButton(
+              child: Column(
+                children: <Widget>[
+                  Padding(padding: EdgeInsets.all(10)),
+                  Text(
+                    "Wishlist",
+                    style: TextStyle(fontSize: 17, color: Colors.red.shade300),
+                  ),
+                  // Icon(
+                  //   Icons.shopping_bag_outlined,
+                  //   color: Colors.purpleAccent,
+                  // ),
+                ],
               ),
               onPressed: () {
                 Navigator.of(context).pushNamed(BazarlistScreen.routeName);
@@ -46,6 +56,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
             ),
           ),
           PopupMenuButton(
+            color: Colors.pink.shade100,
             onSelected: (FilterOptions selectedValue) {
               setState(() {
                 if (selectedValue == FilterOptions.Favorite) {
@@ -55,7 +66,10 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                 }
               });
             },
-            icon: Icon(Icons.more_vert),
+            icon: Icon(
+              Icons.more_vert,
+              color: Colors.pink,
+            ),
             itemBuilder: (_) => [
               PopupMenuItem(
                 child: Text('Show All'),
@@ -65,10 +79,10 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                 child: Text('Only Favorites'),
                 value: FilterOptions.Favorite,
               ),
-              PopupMenuItem(
-                child: Text('Wishlist'),
-                value: FilterOptions.Wishlist,
-              ),
+              // PopupMenuItem(
+              //   child: Text('Wishlist'),
+              //   value: FilterOptions.Wishlist,
+              // ),
             ],
           ),
         ],

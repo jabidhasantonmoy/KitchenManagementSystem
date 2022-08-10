@@ -31,7 +31,7 @@ class AppDrawer extends StatelessWidget {
           Divider(),
           ListTile(
             leading: Icon(Icons.payment),
-            title: Text("Orders"),
+            title: Text("My Bazar List"),
             tileColor: Colors.pink[100],
             onTap: () {
               Navigator.of(context)
