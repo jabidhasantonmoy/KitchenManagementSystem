@@ -18,7 +18,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
   final _imageUrlController = TextEditingController();
   final _imageUrlFocusNode = FocusNode();
   final _form = GlobalKey<FormState>();
-  var _editedProduct = Product(
+  late var _editedProduct = Product(
     id: 'null',
     title: '',
     description: '',
@@ -42,8 +42,8 @@ class _EditProductScreenState extends State<EditProductScreen> {
   @override
   void didChangeDependencies() {
     if (_isInit) {
-      dynamic productId = ModalRoute.of(context)!.settings.arguments == null
-          ? 'null'
+      final productId = ModalRoute.of(context)!.settings.arguments == null
+          ? "null"
           : ModalRoute.of(context)!.settings.arguments as String;
       if (productId != 'null') {
         _editedProduct =
@@ -71,10 +71,10 @@ class _EditProductScreenState extends State<EditProductScreen> {
     super.dispose();
   }
 
-  // ||
-  // (!_imageUrlController.text.endsWith('.png') &&
-  // !_imageUrlController.text.endsWith('.jpg') &&
-  // !_imageUrlController.text.endsWith('.jpeg'))
+  /*||
+  (!_imageUrlController.text.endsWith('.png') &&
+  !_imageUrlController.text.endsWith('.jpg') &&
+  !_imageUrlController.text.endsWith('.jpeg'))*/
 
   void _updateImageUrl() {
     if (!_imageUrlFocusNode.hasFocus) {
@@ -241,6 +241,9 @@ class _EditProductScreenState extends State<EditProductScreen> {
                         textInputAction: TextInputAction.done,
                         controller: _imageUrlController,
                         focusNode: _imageUrlFocusNode,
+                        onEditingComplete: () {
+                          setState(() {});
+                        },
                         onFieldSubmitted: (_) {
                           _saveForm();
                         },

@@ -1,6 +1,9 @@
+import 'dart:convert';
 import 'package:flutter/cupertino.dart';
-import './product.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
+import './product.dart';
 
 class Products with ChangeNotifier {
   List<Product> _items = [
@@ -114,6 +117,19 @@ class Products with ChangeNotifier {
   // }
 
   void addProduct(Product product) {
+    const url =
+        'https://fydpgm-default-rtdb.asia-southeast1.firebasedatabase.app/products.json';
+    http.post(
+      Uri.parse(url),
+      body: json.encode({
+        'title': product.title,
+        'description': product.description,
+        'price': product.price,
+        'imageUrl': product.imageUrl,
+        'isFavourite': product.isFavourite,
+      }),
+    );
+
     final newProduct = Product(
       id: DateTime.now().toString(),
       title: product.title,
