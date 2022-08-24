@@ -116,9 +116,21 @@ class Products with ChangeNotifier {
   //   notifyListeners();
   // }
 
+  Future<void> fetchAndSetProducts() async {
+    const url =
+        'https://fydpgm-default-rtdb.asia-southeast1.firebasedatabase.app/products.json';
+    try {
+      final response = await http.get(Uri.parse(url));
+      print(response);
+    } catch (error) {
+      throw (error);
+    }
+  }
+
   Future<void> addProduct(Product product) async {
     const url =
         'https://fydpgm-default-rtdb.asia-southeast1.firebasedatabase.app/products.json';
+
     try {
       final response = await http.post(
         Uri.parse(url),
